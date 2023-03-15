@@ -1,10 +1,14 @@
 import React from "react";
+import { Box } from "@mui/material";
+import Chats from "./chats";
+
+
 
 const GeneralApp = () => {
-
   return (
     <>
-      App
+      {/* CHATS */}
+      <Chats />
     </>
   );
 };
