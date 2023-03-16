@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  Icon,
   IconButton,
   Typography,
   Stack,
@@ -9,7 +8,6 @@ import {
   Button,
   Avatar,
   Badge,
-  Divider,
 } from "@mui/material";
 import {
   ArchiveBox,
@@ -17,40 +15,17 @@ import {
   Divide,
   MagnifyingGlass,
 } from "phosphor-react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled, alpha, useTheme } from "@mui/material/styles";
 import { ChatList } from "../../data";
 import { SimpleBarStyle } from "../../components/Scrollbar";
-import { useTheme } from "@emotion/react";
-import { faker } from "@faker-js/faker";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../../components/settings/Search";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
+import { faker } from "@faker-js/faker";
+import StyledBadge from "../../components/StyledBadge";
 
 const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
   const theme = useTheme();
@@ -68,12 +43,11 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
     >
       <Stack
         direction="row"
-        alignItem={"center"}
+        alignItems={"center"}
         justifyContent="space-between"
       >
         <Stack direction="row" spacing={2}>
           {" "}
-          
           {online ? (
             <StyledBadge
               overlap="circular"
@@ -91,7 +65,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
           </Stack>
         </Stack>
         <Stack spacing={2} alignItems="center">
-          <Typography sx={{ fontWeight: 400 }} v ariant="option">
+          <Typography sx={{ fontWeight: 400 }} variant="option">
             {" "}
             {time}
           </Typography>
@@ -102,32 +76,7 @@ const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
   );
 };
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: 20,
-  backgroundColor: alpha(theme.palette.background.default, 1),
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-}));
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    width: "100%",
-  },
-}));
+
 
 const Chats = () => {
   const theme = useTheme();
@@ -156,11 +105,11 @@ const Chats = () => {
             </IconButton>
           </Stack>
           <Stack sx={{ width: "100%" }}>
-            <Search>
-              <SearchIconWrapper>
+            <Search >
+              <SearchIconWrapper >
                 <MagnifyingGlass color="#709ce6" />
               </SearchIconWrapper>
-              <StyledInputBase placeholder="search" />
+              <StyledInputBase  placeholder="search" />
             </Search>
           </Stack>
           <Stack spacing={1}>
@@ -176,7 +125,7 @@ const Chats = () => {
             sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}
           >
             <SimpleBarStyle timeout={500} clickOnTrack={false}>
-              <Stack spacing={5}>
+              <Stack spacing={3}>
                 <Typography variant="subtitle" sx={{ color: "#676767" }}>
                   Pinned
                 </Typography>
@@ -194,7 +143,7 @@ const Chats = () => {
                   )
                 )}
               </Stack>
-              <Divider />
+
               <Stack spacing={2.4}>
                 <Typography variant="subtitle" sx={{ color: "#676767" }}>
                   All Chats

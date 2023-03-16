@@ -129,7 +129,7 @@ const ChatList = [
   },
 ];
 
-const Chat_History = [
+export const Chat_History = [
   {
     type: "msg",
     message: "Hi 👋🏻, How are ya ?",
@@ -225,6 +225,6 @@ export {
   Nav_Setting,
   Nav_Buttons,
   ChatList,
-  Chat_History,
+  // Chat_History,
   Message_options,
 };
