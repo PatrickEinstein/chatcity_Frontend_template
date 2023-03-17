@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker";
-import { Avatar, IconButton, Divider } from "@mui/material";
+import { Avatar, IconButton, Divider, Menu, MenuItem } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Box, Stack } from "@mui/system";
 import { Gear } from "phosphor-react";
 import React, { useState } from "react";
 import AntSwitch from "../../components/AntSwitch";
-import { Nav_Buttons } from "../../data";
+import { Nav_Buttons, Profile_Menu } from "../../data";
 import useSettings from "../../hooks/useSettings";
 import Logo from "../../assets/Images/logo.ico";
 
@@ -13,6 +13,21 @@ const SideBar = () => {
   const [selected, setSelected] = useState(0);
   const { onToggleMode } = useSettings();
   const theme = useTheme();
+
+  const [anchorEl1, setAnchorEl1] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl1(event.currentTarget);
+    //from my pov
+    //this on clicks sets a vslue inside the anchor
+    // this makes the anchor non-empty hence 1
+    // then the open props in the menu takes a value of 1 and opens
+  };
+
+  const handleClose = () => {
+    setAnchorEl1(null);
+  };
+
   return (
     <Box
       p={2}
@@ -126,7 +141,52 @@ const SideBar = () => {
           {/* SWITCH */}
           <AntSwitch onChange={onToggleMode} defaultChecked />
           {/* AVATAR */}
-          <Avatar src={faker.image.avatar()} />
+          <Avatar
+            id="simple-menus"
+            src={faker.image.avatar()}
+            aria-haspopup="true"
+            //  aria-expanded ={open ? "true" : undefined}
+            onClick={handleClick}
+          />
+          <Menu
+            id="basic-menus"
+            anchorEl1={anchorEl1}
+            keepMounted
+            open={Boolean(anchorEl1)}
+            MenuListProps={{
+              "aria-labelledby": "simple-menus",
+            }}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            onClose={handleClose}
+          >
+            <Stack spacing={1} px={1}>
+              {Profile_Menu.map((el) => (
+                <MenuItem onClick={handleClose}>
+                  <Stack
+                    sx={{
+                      width: 100,
+                      direction: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <span>{el.title}</span>
+                    {el.icon}
+                  </Stack>
+                </MenuItem>
+              ))}
+            </Stack>
+            {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+          </Menu>
         </Stack>
       </Stack>
     </Box>

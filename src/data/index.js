@@ -9,7 +9,7 @@ import {
   Users,
 } from "phosphor-react";
 
-const Profile_Menu = [
+export const Profile_Menu = [
   {
     title: "Profile",
     icon: <User />,
@@ -199,7 +199,7 @@ export const Chat_History = [
   },
 ];
 
-const Message_options = [
+export const Message_options = [
   {
     title: "Reply",
   },
@@ -221,10 +221,10 @@ const Message_options = [
 ];
 
 export {
-  Profile_Menu,
+  // Profile_Menu,
   Nav_Setting,
   Nav_Buttons,
   ChatList,
   // Chat_History,
-  Message_options,
+  // Message_options,
 };

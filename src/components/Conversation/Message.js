@@ -19,7 +19,7 @@ function Message() {
                 case "doc":
                   return <DocMsg el={el} />;
                 case "Link":
-                  <LinkMsg el={el} />;
+                return  <LinkMsg el={el} />;
                 case "reply":
                   return <ReplyMsg el={el} />;
 
