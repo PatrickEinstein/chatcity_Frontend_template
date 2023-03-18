@@ -14,10 +14,10 @@ const SideBar = () => {
   const { onToggleMode } = useSettings();
   const theme = useTheme();
 
-  const [anchorEl1, setAnchorEl1] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
-    setAnchorEl1(event.currentTarget);
+    setAnchorEl(event.currentTarget);
     //from my pov
     //this on clicks sets a vslue inside the anchor
     // this makes the anchor non-empty hence 1
@@ -25,7 +25,7 @@ const SideBar = () => {
   };
 
   const handleClose = () => {
-    setAnchorEl1(null);
+    setAnchorEl(null);
   };
 
   return (
@@ -150,9 +150,9 @@ const SideBar = () => {
           />
           <Menu
             id="basic-menus"
-            anchorEl1={anchorEl1}
+            anchorEl={anchorEl}
             keepMounted
-            open={Boolean(anchorEl1)}
+            open={Boolean(anchorEl)}
             MenuListProps={{
               "aria-labelledby": "simple-menus",
             }}

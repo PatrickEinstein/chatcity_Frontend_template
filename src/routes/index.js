@@ -26,15 +26,15 @@ export default function Router() {
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: "app", element: <GeneralApp /> },
         
-        { path: "404", element: <Page404 /> },
-        { path: "*", element: <Navigate to="/404" replace /> },
+        // { path: "404", element: <Page404 /> },
+        // { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
-    { path: "*", element: <Navigate to="/404" replace /> },
+    // { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
 
 const GeneralApp = Loadable(
   lazy(() => import("../pages/dashboard/GeneralApp")),
 );
-const Page404 = Loadable(lazy(() => import("../pages/Page404")));
+// const Page404 = Loadable(lazy(() => import("../pages/Page404")));
