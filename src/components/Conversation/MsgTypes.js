@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Message_options } from "../../data/index";
 import { useState } from "react";
 
-export const DocMsg = ({ el }) => {
+export const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack
@@ -51,13 +51,13 @@ export const DocMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions/>
+      { menu && <MessageOptions/> }
     </Stack>
   );
 };
 
 /////////////////////////////////
-export const LinkMsg = ({ el }) => {
+export const LinkMsg = ({ el , menu }) => {
   const theme = useTheme();
   return (
     <Stack
@@ -108,7 +108,7 @@ export const LinkMsg = ({ el }) => {
           </Stack>
         </Stack>
       </Box>
-      <MessageOptions/>
+      { menu && <MessageOptions/> }
     </Stack>
   );
 };
@@ -179,7 +179,7 @@ export const MessageOptions = () => {
 };
 
 ////////////////////////////////////////
-export const TextMsg = ({ el }) => {
+export const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
   console.log(theme);
   return (
@@ -206,12 +206,12 @@ export const TextMsg = ({ el }) => {
         </Typography>
       </Box>
       {/* MESSAGE OPTIONS */}
-      <MessageOptions/>
+      { menu && <MessageOptions/> }
     </Stack>
   );
 };
 ///////////////////////////////
-export const MediaMsg = ({ el }) => {
+export const MediaMsg = ({ el , menu}) => {
   const theme = useTheme();
   return (
     <Stack
@@ -243,13 +243,14 @@ export const MediaMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions/>
+      { menu && <MessageOptions/> }
+      
     </Stack>
   );
 };
 /////////////////////////////////////////////////
 
-export const ReplyMsg = ({ el }) => {
+export const ReplyMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
     <Stack
@@ -290,7 +291,7 @@ export const ReplyMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions/>
+      { menu && <MessageOptions/> }
     </Stack>
   );
 };

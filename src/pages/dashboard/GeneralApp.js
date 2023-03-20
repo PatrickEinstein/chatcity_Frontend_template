@@ -6,6 +6,8 @@ import { useTheme } from "@mui/material/styles";
 import Contact from "../../components/Contact";
 import { useSelector } from "react-redux";
 import { toggleSidebar } from "../../redux/slices/appReducer";
+import SharedMessages from "../../components/SharedMessages";
+import StarredMessages from "../../components/StarredMessages";
 
 const GeneralApp = () => {
   const contactOnOff = useSelector((state) => state.sidebar.open);
@@ -30,7 +32,27 @@ const GeneralApp = () => {
         <Conversation />
       </Box>
       {/* CONTACT INFO */}
-      {contactOnOff && <Contact />}
+      {contactOnOff &&
+        (() => {
+          
+          switch (contactOnOff.type) {
+            case "CONTACT":
+              return <Contact />;
+             
+
+            case "STARRED":
+              return <StarredMessages />;
+             
+
+            case "SHARED":
+              return <SharedMessages />;
+              
+
+            default:
+            return <Contact />;
+          }
+         
+        })()}
     </Stack>
   );
 };

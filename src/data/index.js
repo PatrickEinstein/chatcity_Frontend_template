@@ -220,6 +220,92 @@ export const Message_options = [
   },
 ];
 
+export const SHAREDLINKS =[
+  {
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.avatar(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+   {
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+
+{
+  type: "msg",
+  subtype: "link",
+  preview: faker.image.city(),
+  message: "Yep, I can also do that",
+  incoming: true,
+  outgoing: false,
+},
+{
+  type: "msg",
+  subtype: "link",
+  preview: faker.image.fashion(),
+  message: "Yep, I can also do that",
+  incoming: true,
+  outgoing: false,
+},
+
+{
+  type: "msg",
+  subtype: "link",
+  preview: faker.image.food(),
+  message: "Yep, I can also do that",
+  incoming: true,
+  outgoing: false,
+},
+]
+
+
+
+export const SHAREDDOCS =[
+  {
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+ 
+]
+
 export {
   // Profile_Menu,
   Nav_Setting,

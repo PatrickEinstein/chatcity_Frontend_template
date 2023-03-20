@@ -11,12 +11,12 @@ import { faker } from "@faker-js/faker";
 import StyledBadge from "../StyledBadge";
 import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from "phosphor-react";
 import { useDispatch } from "react-redux";
-import { toggleSidebar, ToggleSidebar } from "../../redux/slices/appReducer";
+import { toggleSidebar, updateSidebarType} from "../../redux/slices/appReducer";
 
 
 const Header = () => {
   const theme = useTheme();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <Box
       sx={{
@@ -35,7 +35,7 @@ const Header = () => {
         justifyContent="space-between"
         sx={{ width: "100%", height: "100%" }}
       >
-        <Stack onClick={( ) =>(dispatch(toggleSidebar()))} direction={"row"} spacing={2}>
+        <Stack onClick={( ) =>(dispatch(toggleSidebar(), updateSidebarType("CONTACT") )      )} direction={"row"} spacing={2}>
           <Box>
             <StyledBadge
               overlap="circular"

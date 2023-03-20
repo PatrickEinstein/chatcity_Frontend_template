@@ -19,14 +19,30 @@ import {
   VideoCamera,
   X,
 } from "phosphor-react";
+import { useState } from "react";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleSidebar } from "../redux/slices/appReducer";
+import { toggleSidebar, updateSidebarType } from "../redux/slices/appReducer";
+import UpdateSidebarType from "../redux/slices/appReducer";
 import AntSwitch from "./AntSwitch";
+import { DeleteDialog } from "./Dialogs";
+import { BlockDialog } from "./Dialogs";
+
 
 const Contact = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const [openBlock, setOpenBlock] = useState(false)
+  const [openDelete, setOpenDelete] = useState(false)
+
+
+  const handleCloseBlock =( ) =>{
+    setOpenBlock(false)
+  }
+  const handleCloseDelete =( ) =>{
+    setOpenBlock(false)
+  }
+
   return (
     <Box sx={{ width: 320, height: "100vh" }}>
       <Stack sx={{ height: "100%" }}>
@@ -123,7 +139,9 @@ const Contact = () => {
             <Stack justifyContent="space-between" spacing={4}>
             <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle">Media, Links & Docs</Typography>
-            <Button endIcon={<CaretRight />}>401</Button>
+            <Button onClick={() =>(
+              UpdateSidebarType("SHARED")
+            )} endIcon={<CaretRight />}>401</Button>
             </Stack>
             <Stack direction="row" spacing={2} alignItems={"center"}>
               {[1, 2, 3].map((el) => (
@@ -143,7 +161,9 @@ const Contact = () => {
                 <Star size={25} />
                 <Typography variant="subtitle2">Starred Messages</Typography>
               </Stack>
-              <IconButton>
+              <IconButton onClick={() =>(
+              dispatch(updateSidebarType("STARRED"))
+            )}>
                 <CaretRight />
               </IconButton>
             </Stack>
@@ -178,10 +198,10 @@ const Contact = () => {
               </Stack>
             </Stack>
             <Stack direction="row" alignItems="center" spacing={2}>
-              <Button startIcon={<Prohibit />} fullWidth variant="outlined">
+              <Button onClick={( ) =>(setOpenBlock(true))} startIcon={<Prohibit />} fullWidth variant="outlined">
                 Block
               </Button>
-              <Button startIcon={<Trash />} fullWidth variant="outlined">
+              <Button onClick={( ) =>(setOpenDelete(true))} startIcon={<Trash />} fullWidth variant="outlined">
                 Clear
               </Button>
             </Stack>
@@ -189,6 +209,9 @@ const Contact = () => {
           </Stack>
         </Stack>
       </Stack>
+      { openBlock && <BlockDialog open={openBlock} handleClose={handleCloseBlock}/>}
+      { openBlock && <openDelete open={openDelete} handleClose={handleCloseDelete}/>}
+
     </Box>
   );
 };
