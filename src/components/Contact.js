@@ -140,7 +140,7 @@ const Contact = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle">Media, Links & Docs</Typography>
             <Button onClick={() =>(
-              UpdateSidebarType("SHARED")
+             dispatch(updateSidebarType("SHARED"))
             )} endIcon={<CaretRight />}>401</Button>
             </Stack>
             <Stack direction="row" spacing={2} alignItems={"center"}>

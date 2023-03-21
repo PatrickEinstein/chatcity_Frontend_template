@@ -28,17 +28,17 @@ const appSlice = createSlice({
 //   };
 // };
 
-export const UpdateSidebarType = (type) => {
+// export const UpdateSidebarType = (type) => {
 
-  const dispatch = useDispatch();
-  return () => {
-    dispatch(
-      appSlice.actions.updateSidebarType({
-        type
-      })
-    );
-  };
-};
+//   const dispatch = useDispatch();
+//   return () => {
+//     dispatch(
+//       appSlice.actions.updateSidebarType({
+//         type
+//       })
+//     );
+//   };
+// };
 
 export const { toggleSidebar, updateSidebarType } = appSlice.actions;
 export default appSlice.reducer;

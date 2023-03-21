@@ -34,24 +34,19 @@ const GeneralApp = () => {
       {/* CONTACT INFO */}
       {contactOnOff &&
         (() => {
-          
           switch (contactOnOff.type) {
             case "CONTACT":
               return <Contact />;
-             
 
             case "STARRED":
               return <StarredMessages />;
-             
 
             case "SHARED":
               return <SharedMessages />;
-              
 
             default:
-            return <Contact />;
+              return <SharedMessages />;
           }
-         
         })()}
     </Stack>
   );

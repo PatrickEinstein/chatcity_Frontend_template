@@ -1,18 +1,15 @@
 import { Box, Stack } from "@mui/system";
 import React from "react";
-import {
-  Avatar,
-  Divider,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import  {useTheme} from "@mui/material/styles"
+import { Avatar, Divider, IconButton, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { faker } from "@faker-js/faker";
 import StyledBadge from "../StyledBadge";
 import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from "phosphor-react";
 import { useDispatch } from "react-redux";
-import { toggleSidebar, updateSidebarType} from "../../redux/slices/appReducer";
-
+import {
+  toggleSidebar,
+  updateSidebarType,
+} from "../../redux/slices/appReducer";
 
 const Header = () => {
   const theme = useTheme();
@@ -35,7 +32,14 @@ const Header = () => {
         justifyContent="space-between"
         sx={{ width: "100%", height: "100%" }}
       >
-        <Stack onClick={( ) =>(dispatch(toggleSidebar(), updateSidebarType("CONTACT") )      )} direction={"row"} spacing={2}>
+        <Stack
+          onClick={() =>
+            dispatch(toggleSidebar())
+          }
+          //, updateSidebarType("CONTACT")
+          direction={"row"}
+          spacing={2}
+        >
           <Box>
             <StyledBadge
               overlap="circular"
