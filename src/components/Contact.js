@@ -27,10 +27,12 @@ import UpdateSidebarType from "../redux/slices/appReducer";
 import AntSwitch from "./AntSwitch";
 import { DeleteDialog } from "./Dialogs";
 import { BlockDialog } from "./Dialogs";
+import { useNavigate } from "react-router-dom";
 
 
 const Contact = () => {
   const theme = useTheme();
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [openBlock, setOpenBlock] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
@@ -114,9 +116,9 @@ const Contact = () => {
               <Typography variant="overline">Voice </Typography>
             </Stack>
             <Stack spacing={1} alignItems="center">
-              <IconButton>
+              <IconButton onClick={() => navigate("/vid")} >
                 <VideoCamera />
-              </IconButton>
+              </IconButton >
               <Typography variant="overline">Video</Typography>
             </Stack>
           </Stack>

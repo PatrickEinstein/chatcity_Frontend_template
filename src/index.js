@@ -10,23 +10,25 @@ import SettingsProvider from "./contexts/SettingsContext";
 import { store } from "./redux/slices/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import {persistStore} from "redux-persist";
+import { persistStore } from "redux-persist";
+import { ContextProvider } from "./videoapp/socketcontex";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-
 
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistStore(store)}>
-        <SettingsProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </SettingsProvider>
-     </PersistGate>
-     </Provider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistStore(store)}>
+          <SettingsProvider>
+            <BrowserRouter>
+              <ContextProvider>
+                <App />
+              </ContextProvider>
+            </BrowserRouter>
+          </SettingsProvider>
+        </PersistGate>
+      </Provider>
     </HelmetProvider>
   </React.StrictMode>
 );
