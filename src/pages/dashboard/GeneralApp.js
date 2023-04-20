@@ -11,6 +11,8 @@ import StarredMessages from "../../components/StarredMessages";
 
 const GeneralApp = () => {
   const contactOnOff = useSelector((state) => state.sidebar.open);
+  const contacttype = useSelector((state) => state.sidebar.type)
+  
   console.log(contactOnOff);
   const theme = useTheme();
   return (
@@ -32,9 +34,9 @@ const GeneralApp = () => {
         <Conversation />
       </Box>
       {/* CONTACT INFO */}
-      {contactOnOff &&
+      {contactOnOff ? 
         (() => {
-          switch (contactOnOff.type) {
+          switch (contacttype) {
             case "CONTACT":
               return <Contact />;
 
@@ -45,9 +47,9 @@ const GeneralApp = () => {
               return <SharedMessages />;
 
             default:
-              return <SharedMessages />;
+              return <Contact />;
           }
-        })()}
+        })() : null}
     </Stack>
   );
 };
