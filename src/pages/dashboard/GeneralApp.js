@@ -30,6 +30,7 @@ const GeneralApp = () => {
               : theme.palette.background.default,
         }}
       >
+        
         {/* CONVERSION */}
         <Conversation />
       </Box>
