@@ -8,7 +8,7 @@ import DashboardLayout from "../layouts/dashboard";
 import { DEFAULT_PATH } from "../config";
 import LoadingScreen from "../components/LoadingScreen";
 // import VideoPlay from "../Videocall/App";
-import RenderApp from "../vidclient/src";
+import RenderApp from "../vidclient/components";
 const Loadable = (Component) => (props) => {
   return (
     //the LoadingScreen component will de dispalyed while the screen is loading
