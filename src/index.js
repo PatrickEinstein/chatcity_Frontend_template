@@ -16,21 +16,24 @@ import { ContextProvider } from "./Videocall/Context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
+  <ContextProvider>
   <React.StrictMode>
+     
     <HelmetProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistStore(store)}>
           <SettingsProvider>
             <BrowserRouter>
-              <ContextProvider>
+              {/* <ContextProvider> */}
                 <App />
-              </ContextProvider>
+              {/* </ContextProvider> */}
             </BrowserRouter>
           </SettingsProvider>
         </PersistGate>
       </Provider>
     </HelmetProvider>
   </React.StrictMode>
+  </ContextProvider>
 );
 
 // // If you want to start measuring performance in your app, pass a function
