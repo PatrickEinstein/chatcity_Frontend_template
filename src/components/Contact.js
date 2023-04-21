@@ -29,21 +29,23 @@ import { DeleteDialog } from "./Dialogs";
 import { BlockDialog } from "./Dialogs";
 import { useNavigate } from "react-router-dom";
 
-
 const Contact = () => {
   const theme = useTheme();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [openBlock, setOpenBlock] = useState(false)
-  const [openDelete, setOpenDelete] = useState(false)
+  const [openBlock, setOpenBlock] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
+  const Videocall = () => {
+    window.open("https://ccity.vercel.app/", "_blank");
+  };
 
-  const handleCloseBlock =( ) =>{
-    setOpenBlock(false)
-  }
-  const handleCloseDelete =( ) =>{
-    setOpenBlock(false)
-  }
+  const handleCloseBlock = () => {
+    setOpenBlock(false);
+  };
+  const handleCloseDelete = () => {
+    setOpenBlock(false);
+  };
 
   return (
     <Box sx={{ width: 320, height: "100vh" }}>
@@ -83,25 +85,25 @@ const Contact = () => {
           padding={3}
           spacing={3}
         >
-          <Stack alignItems={"center"} direction="row" spacing={3} >
+          <Stack alignItems={"center"} direction="row" spacing={3}>
             <Avatar
               src={faker.image.avatar()}
               alt={faker.name.firstName()}
               sx={{ height: 64, width: 64 }}
             />
             <Stack alignItems={"center"} justifyContent="space-between">
-            <Stack spacing={0.5}>
-              <Typography variant="article" fontWeight={600}>
-                {" "}
-                {faker.name.fullName()}
-              </Typography>
-            </Stack>
-            <Stack spacing={0.5}>
-              <Typography variant="body2" fontWeight={500}>
-                {" "}
-                {"+91 725 2829 2992"}
-              </Typography>
-            </Stack>
+              <Stack spacing={0.5}>
+                <Typography variant="article" fontWeight={600}>
+                  {" "}
+                  {faker.name.fullName()}
+                </Typography>
+              </Stack>
+              <Stack spacing={0.5}>
+                <Typography variant="body2" fontWeight={500}>
+                  {" "}
+                  {"+91 725 2829 2992"}
+                </Typography>
+              </Stack>
             </Stack>
           </Stack>
           <Stack
@@ -116,9 +118,9 @@ const Contact = () => {
               <Typography variant="overline">Voice </Typography>
             </Stack>
             <Stack spacing={1} alignItems="center">
-              <IconButton onClick={() => navigate("/vid")} >
+              <IconButton onClick={Videocall}>
                 <VideoCamera />
-              </IconButton >
+              </IconButton>
               <Typography variant="overline">Video</Typography>
             </Stack>
           </Stack>
@@ -133,42 +135,59 @@ const Contact = () => {
           </Stack>
           <Divider />
           <Stack>
-          <Stack
-            // alignItems={"center"}
-            justifyContent="space-between"
-            spacing={2}
-          >
-            <Stack justifyContent="space-between" spacing={4}>
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography variant="subtitle">Media, Links & Docs</Typography>
-            <Button onClick={() =>(
-             dispatch(updateSidebarType("SHARED"))
-            )} endIcon={<CaretRight />}>401</Button>
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems={"center"}>
-              {[1, 2, 3].map((el) => (
-                <Box>
-                  <img src={faker.image.food()} alt={faker.name.fullName()} />
-                </Box>
-              ))}
-            </Stack>
-            </Stack>
-            <Divider />
             <Stack
-              // alignItems="center"
-              direction="row"
+              // alignItems={"center"}
               justifyContent="space-between"
+              spacing={2}
             >
-              <Stack direction={"row"} alignItems={"center"} justifyContent="space-between" spacing={2}>
-                <Star size={25} />
-                <Typography variant="subtitle2">Starred Messages</Typography>
+              <Stack justifyContent="space-between" spacing={4}>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Typography variant="subtitle">
+                    Media, Links & Docs
+                  </Typography>
+                  <Button
+                    onClick={() => dispatch(updateSidebarType("SHARED"))}
+                    endIcon={<CaretRight />}
+                  >
+                    401
+                  </Button>
+                </Stack>
+                <Stack direction="row" spacing={2} alignItems={"center"}>
+                  {[1, 2, 3].map((el) => (
+                    <Box>
+                      <img
+                        src={faker.image.food()}
+                        alt={faker.name.fullName()}
+                      />
+                    </Box>
+                  ))}
+                </Stack>
               </Stack>
-              <IconButton onClick={() =>(
-              dispatch(updateSidebarType("STARRED"))
-            )}>
-                <CaretRight />
-              </IconButton>
-            </Stack>
+              <Divider />
+              <Stack
+                // alignItems="center"
+                direction="row"
+                justifyContent="space-between"
+              >
+                <Stack
+                  direction={"row"}
+                  alignItems={"center"}
+                  justifyContent="space-between"
+                  spacing={2}
+                >
+                  <Star size={25} />
+                  <Typography variant="subtitle2">Starred Messages</Typography>
+                </Stack>
+                <IconButton
+                  onClick={() => dispatch(updateSidebarType("STARRED"))}
+                >
+                  <CaretRight />
+                </IconButton>
+              </Stack>
             </Stack>
             <Divider />
             <Stack
@@ -176,8 +195,8 @@ const Contact = () => {
               direction="row"
               justifyContent="space-between"
               sx={{
-                pt:3,
-                pb:3
+                pt: 3,
+                pb: 3,
               }}
             >
               <Stack direction={"row"} alignItems={"center"} spacing={2}>
@@ -187,33 +206,55 @@ const Contact = () => {
               <AntSwitch />
             </Stack>
             <Divider />
-            <Stack sapcing={4} justifyContent="space-between" >
-            <Typography>2 Groups in Common</Typography>
+            <Stack sapcing={4} justifyContent="space-between">
+              <Typography>2 Groups in Common</Typography>
 
-            <Stack sx={{pt : 3, pb : 3}}direction="row" sapcing={2} alignItems="center" justifyContent="space-between">
-              <Avatar src={faker.image.avatar()} alt={faker.name.fullName()} />
-              <Stack spacing={0.5}>
-                <Typography variant="subtitle2">PatrickEInstein</Typography>
-                <Typography variant="caption">
-                  Philomathy, MariahBella, LizzyBae, You
-                </Typography>
+              <Stack
+                sx={{ pt: 3, pb: 3 }}
+                direction="row"
+                sapcing={2}
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Avatar
+                  src={faker.image.avatar()}
+                  alt={faker.name.fullName()}
+                />
+                <Stack spacing={0.5}>
+                  <Typography variant="subtitle2">PatrickEInstein</Typography>
+                  <Typography variant="caption">
+                    Philomathy, MariahBella, LizzyBae, You
+                  </Typography>
+                </Stack>
               </Stack>
-            </Stack>
-            <Stack direction="row" alignItems="center" spacing={2}>
-              <Button onClick={( ) =>(setOpenBlock(true))} startIcon={<Prohibit />} fullWidth variant="outlined">
-                Block
-              </Button>
-              <Button onClick={( ) =>(setOpenDelete(true))} startIcon={<Trash />} fullWidth variant="outlined">
-                Clear
-              </Button>
-            </Stack>
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Button
+                  onClick={() => setOpenBlock(true)}
+                  startIcon={<Prohibit />}
+                  fullWidth
+                  variant="outlined"
+                >
+                  Block
+                </Button>
+                <Button
+                  onClick={() => setOpenDelete(true)}
+                  startIcon={<Trash />}
+                  fullWidth
+                  variant="outlined"
+                >
+                  Clear
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
       </Stack>
-      { openBlock && <BlockDialog open={openBlock} handleClose={handleCloseBlock}/>}
-      { openBlock && <openDelete open={openDelete} handleClose={handleCloseDelete}/>}
-
+      {openBlock && (
+        <BlockDialog open={openBlock} handleClose={handleCloseBlock} />
+      )}
+      {openBlock && (
+        <openDelete open={openDelete} handleClose={handleCloseDelete} />
+      )}
     </Box>
   );
 };
