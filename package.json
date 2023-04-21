@@ -32,7 +32,7 @@
     "simple-peer": "^9.11.1",
     "simplebar-react": "^2.4.3",
     "socket.io-client": "^4.6.1",
-    "stylis-plugin-rtl": "^2.0.2",
+    "stylis-plugin-rtl": "^2.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

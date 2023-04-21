@@ -11,14 +11,11 @@ import { store } from "./redux/slices/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
-import { ContextProvider } from "./Videocall/Context";
-
+// import { ContextProvider } from "./Videocall/Context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ContextProvider>
   <React.StrictMode>
-     
     <HelmetProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistStore(store)}>
@@ -33,7 +30,6 @@ root.render(
       </Provider>
     </HelmetProvider>
   </React.StrictMode>
-  </ContextProvider>
 );
 
 // // If you want to start measuring performance in your app, pass a function
