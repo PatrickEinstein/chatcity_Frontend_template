@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VideoApp = () => {
+const VideoPlay = () => {
   const classes = useStyles();
 
   return (
@@ -48,4 +48,4 @@ const VideoApp = () => {
   );
 };
 
-export default VideoApp;
+export default VideoPlay;
