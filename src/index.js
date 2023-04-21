@@ -11,7 +11,7 @@ import { store } from "./redux/slices/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
-import { ContextProvider } from "./videoapp/socketcontex";
+import { ContextProvider } from "./videoapp/Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

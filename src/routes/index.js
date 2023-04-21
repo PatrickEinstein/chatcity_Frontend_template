@@ -8,7 +8,7 @@ import DashboardLayout from "../layouts/dashboard";
 import { DEFAULT_PATH } from "../config";
 import LoadingScreen from "../components/LoadingScreen";
 //Video app
-import VidApp from "../videoapp/vidapp";
+import VideoApp from "../videoapp/Video";
 
 const Loadable = (Component) => (props) => {
   return (
@@ -27,7 +27,7 @@ export default function Router() {
       children: [
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: "app", element: <GeneralApp /> },
-        { path: "vid", element: < VidApp /> },
+        { path: "vid", element: <VideoApp /> },
         // { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
