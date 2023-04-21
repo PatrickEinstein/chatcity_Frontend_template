@@ -2,6 +2,7 @@
 
 <h1>click on the avatar in the header of the chatting component , it opens a profile page at the right</h1>
 <h1>clik on the video icon, it opens an external video page</h1>
+<h1>not for mobile screens</h1>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
