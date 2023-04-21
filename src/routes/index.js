@@ -8,7 +8,7 @@ import DashboardLayout from "../layouts/dashboard";
 import { DEFAULT_PATH } from "../config";
 import LoadingScreen from "../components/LoadingScreen";
 // import VideoPlay from "../Videocall/App";
-import RenderApp from "../vidclient/components";
+// import RenderApp from "../vidclient/components";
 const Loadable = (Component) => (props) => {
   return (
     //the LoadingScreen component will de dispalyed while the screen is loading
@@ -26,7 +26,7 @@ export default function Router() {
       children: [
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: "app", element: <GeneralApp /> },
-        { path: "vid", element: <RenderApp /> },
+        // { path: "vid", element: <RenderApp /> },
         // { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
