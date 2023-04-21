@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+##click on the avatar in the header of the chatting component , it opens a profile page at the right
+##clik on the video icon, it opens an external video page
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
