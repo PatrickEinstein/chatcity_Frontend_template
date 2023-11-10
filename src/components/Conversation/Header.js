@@ -33,9 +33,7 @@ const Header = () => {
         sx={{ width: "100%", height: "100%" }}
       >
         <Stack
-          onClick={() =>
-            dispatch(toggleSidebar())
-          }
+          // onClick={() => dispatch(toggleSidebar())}
           //, updateSidebarType("CONTACT")
           direction={"row"}
           spacing={2}
@@ -50,7 +48,7 @@ const Header = () => {
             </StyledBadge>
           </Box>
           <Stack sapcing={2}>
-            <Typography variant="subtitle"> {faker.name.fullName()}</Typography>
+            <Typography variant="subtitle">Cadence </Typography>
             <Typography variant="caption"> Online</Typography>
           </Stack>
         </Stack>

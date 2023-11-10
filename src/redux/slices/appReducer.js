@@ -6,6 +6,7 @@ const initialState = {
     open: false,
     type: "CONTACT", // can also be STARRED, SHARED
   },
+  chatHistory: []
 };
 
 const appSlice = createSlice({
@@ -19,26 +20,13 @@ const appSlice = createSlice({
     updateSidebarType: (state, action) => {
       state.sidebar.type = action.payload;
     },
+    updateChatHistory: (state, action) => {
+      console.log("Action Payload:", action.payload);
+      state.chatHistory.push(action.payload);
+    },
   },
 });
 
-// export const ToggleSidebar = () => {
-//   return async () => {
-//     dispatch(appSlice.actions.toggleSidebar());
-//   };
-// };
-
-// export const UpdateSidebarType = (type) => {
-
-//   const dispatch = useDispatch();
-//   return () => {
-//     dispatch(
-//       appSlice.actions.updateSidebarType({
-//         type
-//       })
-//     );
-//   };
-// };
-
-export const { toggleSidebar, updateSidebarType } = appSlice.actions;
+export const { toggleSidebar, updateSidebarType, updateChatHistory } =
+  appSlice.actions;
 export default appSlice.reducer;

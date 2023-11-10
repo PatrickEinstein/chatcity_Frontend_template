@@ -181,7 +181,6 @@ export const MessageOptions = () => {
 ////////////////////////////////////////
 export const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
-  console.log(theme);
   return (
     <Stack
       direction="row"

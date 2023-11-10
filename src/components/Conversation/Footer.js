@@ -8,9 +8,11 @@ import {
   Tooltip,
 } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import { useTheme, styled } from "@mui/material/styles";
+import HttpCaller from "../../RepositoryService/ApiCaller";
 import {
   Camera,
   File,
@@ -22,6 +24,7 @@ import {
   User,
 } from "phosphor-react";
 import { useState } from "react";
+import { updateChatHistory } from "../../redux/slices/appReducer";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -40,7 +43,7 @@ const Actions = [
   {
     color: "#167042",
     icon: <Camera size={15} />,
-    y:130,
+    y: 130,
     title: "Image",
   },
   {
@@ -52,15 +55,17 @@ const Actions = [
   {
     color: "#051c10",
     icon: <User size={15} />,
-    y:230,
+    y: 230,
     title: "Contacts",
   },
 ];
 
-const ChatInput = ({ setOpenPicker }) => {
+const ChatInput = ({ setOpenPicker, ChatInputed, handleInputChange }) => {
   const [openActions, setOpenActions] = useState(false);
+
   return (
     <StyledInput
+      onChange={handleInputChange}
       fullWidth
       placeholder="write a message..."
       variant="filled"
@@ -79,7 +84,7 @@ const ChatInput = ({ setOpenPicker }) => {
                     sx={{
                       position: "absolute",
                       top: -y,
-                      backgroundColor:{color},
+                      backgroundColor: { color },
                     }}
                   >
                     {icon}
@@ -113,8 +118,34 @@ const ChatInput = ({ setOpenPicker }) => {
   );
 };
 const Footer = () => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const [openPicker, setOpenPicker] = useState(false);
+  const [ChatInputed, setChatInputed] = useState("");
+  const handleInputChange = (event) => {
+    setChatInputed(event.target.value);
+  };
+
+  console.log(`chat==>`, ChatInputed);
+
+  const onChat = async () => {
+    try {
+      const response = await HttpCaller(`chatbot?query=${ChatInputed}`, "POST");
+      console.log(`BotRes==>`, response);
+      const kindOfResponse =
+        typeof response === "string" ? JSON.parse(response) : response;
+      dispatch(
+        updateChatHistory({
+          type: "msg",
+          message: kindOfResponse,
+          incoming: true,
+          outgoing: false,
+        })
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <Box
       p={2}
@@ -149,7 +180,11 @@ const Footer = () => {
               onEmojiSelect={console.log}
             />
           </Box>
-          <ChatInput setOpenPicker={setOpenPicker} />
+          <ChatInput
+            setOpenPicker={setOpenPicker}
+            setChatInputed={setChatInputed}
+            handleInputChange={handleInputChange}
+          />
         </Stack>
 
         <Box
@@ -168,7 +203,7 @@ const Footer = () => {
               justifyContent: "center",
             }}
           >
-            <IconButton>
+            <IconButton onClick={onChat}>
               <PaperPlaneTilt color="white" />
             </IconButton>
           </Stack>

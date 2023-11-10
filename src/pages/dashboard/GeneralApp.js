@@ -11,46 +11,47 @@ import StarredMessages from "../../components/StarredMessages";
 
 const GeneralApp = () => {
   const contactOnOff = useSelector((state) => state.sidebar.open);
-  const contacttype = useSelector((state) => state.sidebar.type)
-  
+  const contacttype = useSelector((state) => state.sidebar.type);
+
   console.log(contactOnOff);
   const theme = useTheme();
   return (
     <Stack direction="row" sx={{ width: "100%" }}>
       {/* CHATS */}
-      <Chats />
-
+      {/* <Chats /> */}
+      {/* //calc(100vw - 420px) */}
+      {/* calc(100vw - 740px) */}
       <Box
         sx={{
           height: "100%",
-          width: contactOnOff ? "calc(100vw - 740px)" : "calc(100vw - 420px)",
+          width: contactOnOff ? "calc(100vw - 400px)" : "100%",
           backgoundColor:
             theme.palette.mode === "light"
               ? "#F0F4FA"
               : theme.palette.background.default,
         }}
       >
-        
         {/* CONVERSION */}
         <Conversation />
       </Box>
       {/* CONTACT INFO */}
-      {contactOnOff ? 
-        (() => {
-          switch (contacttype) {
-            case "CONTACT":
-              return <Contact />;
+      {contactOnOff
+        ? (() => {
+            switch (contacttype) {
+              case "CONTACT":
+                return <Contact />;
 
-            case "STARRED":
-              return <StarredMessages />;
+              case "STARRED":
+                return <StarredMessages />;
 
-            case "SHARED":
-              return <SharedMessages />;
+              case "SHARED":
+                return <SharedMessages />;
 
-            default:
-              return <Contact />;
-          }
-        })() : null}
+              default:
+                return <Contact />;
+            }
+          })()
+        : null}
     </Stack>
   );
 };
