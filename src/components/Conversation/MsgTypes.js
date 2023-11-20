@@ -186,6 +186,7 @@ export const TextMsg = ({ el, menu }) => {
       direction="row"
       alignItems="center"
       justifyContent={el.incoming ? "start" : "end"}
+    
     >
       <Box
         padding={1.5}
@@ -194,7 +195,7 @@ export const TextMsg = ({ el, menu }) => {
             ? theme.palette.primary.main
             : theme.palette.secondary.main,
           borderRadius: 1.5,
-          width: "vex-content",
+          maxWidth: "60%",
         }}
       >
         <Typography

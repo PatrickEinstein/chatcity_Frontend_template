@@ -122,6 +122,7 @@ const Footer = () => {
   const theme = useTheme();
   const [openPicker, setOpenPicker] = useState(false);
   const [ChatInputed, setChatInputed] = useState("");
+  const [disable, setDisable] = useState(false);
   const handleInputChange = (event) => {
     setChatInputed(event.target.value);
   };
@@ -130,20 +131,31 @@ const Footer = () => {
 
   const onChat = async () => {
     try {
-      const response = await HttpCaller(`chatbot?query=${ChatInputed}`, "POST");
+      setDisable(true);
+      const response = await HttpCaller(
+        "chatbot",
+        "POST",
+        {
+          type: "msg",
+          message: `${ChatInputed}`,
+          outgoing: "true",
+          project_id: "9745ee1b-12fb-4d22-9c62-444b847bcb13",
+        },
+        {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJQQVRAZ21haWwuY29tIiwidXNlcklkIjoiMGU0ZDdjM2UtMzhmNS00ZjNmLTk0YjctN2E5NGUxZjIwMjI4IiwiZXhwIjoxNzAwNTk4ODY1fQ.kk6v8_C-C_QVr0WGW_CKOR6aLZjMcUkZmyfpEBD8VyI",
+        }
+      );
       console.log(`BotRes==>`, response);
       const kindOfResponse =
         typeof response === "string" ? JSON.parse(response) : response;
-      dispatch(
-        updateChatHistory({
-          type: "msg",
-          message: kindOfResponse,
-          incoming: true,
-          outgoing: false,
-        })
-      );
+      dispatch(updateChatHistory(kindOfResponse.request));
+      dispatch(updateChatHistory(kindOfResponse.response));
+      setDisable(false);
     } catch (error) {
       console.error("Error:", error);
+      setDisable(false);
     }
   };
   return (
@@ -203,9 +215,11 @@ const Footer = () => {
               justifyContent: "center",
             }}
           >
-            <IconButton onClick={onChat}>
-              <PaperPlaneTilt color="white" />
-            </IconButton>
+            {!disable && (
+              <IconButton onClick={onChat} disable={disable}>
+                <PaperPlaneTilt color={disable ? "red" : "white"} />
+              </IconButton>
+            )}
           </Stack>
         </Box>
       </Stack>

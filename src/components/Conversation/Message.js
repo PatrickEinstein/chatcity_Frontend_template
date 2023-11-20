@@ -18,12 +18,12 @@ function Message({ menu }) {
       <Stack spacing={3}>
         {/* {Chat_History.map((el) => { */}
         {NewChatHistory?.map((el) => {
-          switch (el.type) {
+          switch (el?.type) {
             case "divider":
               return <TimeLine el={el} />;
 
             case "msg":
-              switch (el.subtype) {
+              switch (el?.subtype) {
                 case "img":
                   return <MediaMsg el={el} menu={menu} />;
                 case "doc":

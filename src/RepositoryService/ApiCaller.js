@@ -4,7 +4,7 @@ const HttpCaller = async (route, Method, body, headers) => {
       `https://melody-ai.up.railway.app/${route}`,
       {
         method: `${Method}`,
-        body: body,
+        body: JSON.stringify(body),
         headers: headers,
       }
     );
