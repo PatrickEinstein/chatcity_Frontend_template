@@ -60,7 +60,7 @@ const Actions = [
   },
 ];
 
-const ChatInput = ({ setOpenPicker, ChatInputed, handleInputChange }) => {
+const ChatInput = ({ setOpenPicker, ChatInputed,handleInputChange }) => {
   const [openActions, setOpenActions] = useState(false);
 
   return (
@@ -69,6 +69,7 @@ const ChatInput = ({ setOpenPicker, ChatInputed, handleInputChange }) => {
       fullWidth
       placeholder="write a message..."
       variant="filled"
+      value={ChatInputed}
       InputProps={{
         startAdornment: (
           <Stack sx={{ width: "max-content" }}>
@@ -144,9 +145,10 @@ const Footer = () => {
         {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJQQVRAZ21haWwuY29tIiwidXNlcklkIjoiMGU0ZDdjM2UtMzhmNS00ZjNmLTk0YjctN2E5NGUxZjIwMjI4IiwiZXhwIjoxNzAwNTk4ODY1fQ.kk6v8_C-C_QVr0WGW_CKOR6aLZjMcUkZmyfpEBD8VyI",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJQQVRAZ21haWwuY29tIiwidXNlcklkIjoiMGU0ZDdjM2UtMzhmNS00ZjNmLTk0YjctN2E5NGUxZjIwMjI4IiwiZXhwIjoxNzAwNzI2NDk0fQ._ct2LknZ97QkudbOeE2ktCWeCOL7XeHyqJ6pG90S1XM",
         }
       );
+      setChatInputed("")
       console.log(`BotRes==>`, response);
       const kindOfResponse =
         typeof response === "string" ? JSON.parse(response) : response;
@@ -194,6 +196,7 @@ const Footer = () => {
           </Box>
           <ChatInput
             setOpenPicker={setOpenPicker}
+            ChatInputed={ChatInputed}
             setChatInputed={setChatInputed}
             handleInputChange={handleInputChange}
           />
