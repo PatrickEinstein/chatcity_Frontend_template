@@ -6,7 +6,7 @@ import { Gear } from "phosphor-react";
 import React, { useState } from "react";
 import AntSwitch from "../../components/AntSwitch";
 import { Nav_Buttons, Profile_Menu } from "../../data";
-import useSettings from "../../hooks/useSettings";
+import useSettings from "../../../public/favicon.ico";
 import Logo from "../../assets/Images/logo.ico";
 
 const SideBar = () => {
