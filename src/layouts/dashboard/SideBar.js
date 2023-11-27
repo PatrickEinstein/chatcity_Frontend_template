@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import AntSwitch from "../../components/AntSwitch";
 import { Nav_Buttons, Profile_Menu } from "../../data";
 import useSettings from "../../../public/favicon.ico";
-import Logo from "../../assets/Images/logo.ico";
+import Logo from "../../assets/Images/favicon.ico";
 
 const SideBar = () => {
   const [selected, setSelected] = useState(0);
