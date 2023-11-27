@@ -145,7 +145,7 @@ const Footer = () => {
         {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJQQVRAZ21haWwuY29tIiwidXNlcklkIjoiMGU0ZDdjM2UtMzhmNS00ZjNmLTk0YjctN2E5NGUxZjIwMjI4IiwiZXhwIjoxNzAwNzI2NDk0fQ._ct2LknZ97QkudbOeE2ktCWeCOL7XeHyqJ6pG90S1XM",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJQQVRAZ21haWwuY29tIiwidXNlcklkIjoiMGU0ZDdjM2UtMzhmNS00ZjNmLTk0YjctN2E5NGUxZjIwMjI4IiwiZXhwIjoxNzAxMTgyNzMwfQ._1c54qBXNd_-RHZcds3ItD77blzahaaZtxXEKbf-aJ8",
         }
       );
       setChatInputed("")
